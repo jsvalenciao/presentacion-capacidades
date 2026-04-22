@@ -258,7 +258,7 @@ const ComunicacionesView = ({ onNavigate }) => {
     ];
 
     const plan = [
-        { n:1, t:"Validar scope de licencia con ejecutivo SF", d:"Confirmar si los journeys transaccionales de cartera (avisos de póliza, recordatorios de mora, desistimientos) están dentro del scope del CDP/CEP actual. SF no debería cobrar extra, pero requiere validación contractual explícita.", resp:"Reunión con ejecutivo SF", tipo:"SF" },
+        { n:1, t:"Validar scope de licencia con ejecutivo SF", d:"Confirmar si los journeys transaccionales de cartera (avisos de póliza, recordatorios de mora, desistimientos) están dentro del scope del CDP/CEP actual. SF no debería cobrar extra, pero requiere validación contractual explícita.", resp:"Reunión con SF", tipo:"SF" },
         { n:2, t:"Mapear eventos de SAI como disparadores de journeys", d:"Identificar los campos de fecha de vencimiento y mora en SAI. Configurar el conector (MuleSoft o integración directa) para que cuando quedan 45, 30 y 15 días, se emita un evento que dispare el journey en Marketing Cloud.", resp:"Equipo técnico El Libertador", tipo:"SB" },
         { n:3, t:"Activar Two-Way Email y Employee Agent en SF", d:"Habilitar el Employee Agent desde Setup con el topic de respuesta de cartera. Definir acciones: consulta de estado en SAI, opciones de pago fraccionado, escalado al asesor en Huella con contexto 360 del deudor.", resp:"Equipo SF + Freeway", tipo:"SF" },
         { n:4, t:"Construir el journey de cobranza en Journey Builder", d:"Email día 1 → si no hay respuesta en 4 días → WhatsApp día 5 (sujeto a autorización Meta) → si no responde → alerta automática al asesor con el historial completo. Agentforce gestiona las respuestas en todos los canales.", resp:"VP Mercadeo + Freeway", tipo:"SF" },
@@ -785,7 +785,7 @@ const ReunionView = ({ onNavigate }) => {
                 <div className="relative z-10">
                     <div className="flex items-center gap-3 mb-3">
                         <div className="w-10 h-10 rounded-xl bg-bolivar-yellow-bright/20 flex items-center justify-center shrink-0"><span className="material-symbols-outlined text-bolivar-yellow-bright text-xl">handshake</span></div>
-                        <div><p className="text-[10px] font-black uppercase tracking-[0.2em] text-bolivar-yellow-bright">Hoja de trabajo — Reunión hoy</p><h1 className="text-2xl font-black tracking-tight leading-snug">Reunión con ejecutivos de Salesforce</h1></div>
+                        <div><p className="text-[10px] font-black uppercase tracking-[0.2em] text-bolivar-yellow-bright">Hoja de trabajo — Reunión </p><h1 className="text-2xl font-black tracking-tight leading-snug">Reunión con Salesforce</h1></div>
                     </div>
                     <p className="text-white/70 text-sm font-medium leading-relaxed">Objetivo: clarificar qué licencias tenemos, qué pagamos exactamente, qué estamos usando realmente, y qué capacidades nuevas (especialmente Agentforce) podríamos explorar y bajo qué modelo de acceso.</p>
                 </div>
@@ -814,7 +814,7 @@ const ReunionView = ({ onNavigate }) => {
                         <div className="flex items-center gap-3 mb-3">
                             <h3 className="font-black text-slate-900">Desglose línea a línea — Propuesta V6 (19-Nov-2025, Valentina Contreras)</h3>
                         </div>
-                        <AlertBox type="danger" text="Se identificaron inconsistencias matemáticas por ~$24K USD que deben resolverse antes de firmar. Llevar este cuadro a la reunión y pedir la tabla de precios unitarios que cuadre matemáticamente." />
+                        <AlertBox type="danger" text="Se identificaron inconsistencias matemáticas por ~$24K USD que deben resolverse antes de firmar. El detalle a continuación." />
                         <div className="overflow-x-auto mt-4">
                             <table className="w-full text-xs">
                                 <thead><tr className="border-b-2 border-slate-200 bg-slate-50">
@@ -1018,7 +1018,7 @@ const App = () => {
         return () => window.removeEventListener('hashchange',h);
     },[]);
     const nav = v => { setCv(v); window.location.hash=v; setMob(false); window.scrollTo(0,0); };
-    const navItems = [{view:View.INICIO,label:"Inicio"},{view:View.REUNION,label:"⭐ Reunión SF hoy"},{view:View.NOVEDADES,label:"1. Novedades SF"},{view:View.COMUNICACIONES,label:"2. Cartera"},{view:View.DATA_CLOUD,label:"3. Data Cloud"},{view:View.WHATSAPP,label:"4. WhatsApp"},{view:View.CASOS_USO,label:"Casos de uso"},{view:View.ARQUITECTURA,label:"Arquitectura"},{view:View.DATOS,label:"Datos"},{view:View.AGENDA,label:"Agenda SF"}];
+    const navItems = [{view:View.INICIO,label:"Inicio"},{view:View.REUNION,label:"⭐ Reunión SF"},{view:View.NOVEDADES,label:"1. Novedades SF"},{view:View.COMUNICACIONES,label:"2. Cartera"},{view:View.DATA_CLOUD,label:"3. Data Cloud"},{view:View.WHATSAPP,label:"4. WhatsApp"},{view:View.CASOS_USO,label:"Casos de uso"},{view:View.ARQUITECTURA,label:"Arquitectura"},{view:View.DATOS,label:"Datos"},{view:View.AGENDA,label:"Agenda SF"}];
     const render = () => { switch(cv) { case View.INICIO: return <HomeView onNavigate={nav}/>; case View.REUNION: return <ReunionView onNavigate={nav}/>; case View.NOVEDADES: return <NovedadesView onNavigate={nav}/>; case View.COMUNICACIONES: return <ComunicacionesView onNavigate={nav}/>; case View.DATA_CLOUD: return <DataCloudView onNavigate={nav}/>; case View.WHATSAPP: return <WhatsappView onNavigate={nav}/>; case View.CASOS_USO: return <CasosUsoView/>; case View.ARQUITECTURA: return <ArquitecturaView/>; case View.DATOS: return <DatosView/>; case View.AGENDA: return <AgendaView/>; default: return <HomeView onNavigate={nav}/>; } };
     return (
         <div className="flex flex-col h-screen bg-canvas-bg font-sans">
