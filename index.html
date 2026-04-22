@@ -398,7 +398,7 @@ const DataCloudView = ({ onNavigate }) => {
     return (
         <div className="animate-in space-y-6 pb-20">
             <SectionHeader eyebrow="Punto 3 del backlog" title="Data Cloud de SF vs. Data Lake de SB" subtitle="Para: Sebastián Daza y María Isabel — comparación técnica, ventajas, desventajas y riesgos" />
-            <AlertBox type="warn" text="Decisión estratégica de alto impacto: define si la inteligencia del cliente de Seguros Bolívar vive en la plataforma de un tercero (SF) o en la infraestructura propia de SB. Afecta vendor lock-in, costos a largo plazo y autonomía tecnológica." />
+            <AlertBox type="warn" text="Decisión estratégica de alto impacto: define si la información del cliente de Seguros Bolívar vive en la plataforma de un tercero (SF) o en la infraestructura propia de SB. Afecta vendor lock-in, costos a largo plazo y autonomía tecnológica." />
             <div className="flex gap-2 flex-wrap">
                 {tabs.map(([id,label]) => <button key={id} onClick={() => setTab(id)} className={`px-4 py-2 rounded-xl text-xs font-black transition-all ${tab===id?'bg-[#004A3B] text-white':'bg-white border border-slate-200 text-slate-600'}`}>{label}</button>)}
             </div>
@@ -511,10 +511,10 @@ const WhatsappView = ({ onNavigate }) => {
 
             {tab==='situacion' && (
                 <div className="space-y-5">
-                    <AlertBox type="danger" text="Hay 2 procesos paralelos que deben resolverse coordinadamente: el RFI formal con 3 proveedores y el uso no oficial de Treble por parte del negocio. Ambos generan riesgos distintos si no se gestionan juntos." />
+                    <AlertBox type="danger" text="Hay 2 procesos paralelos que deben resolverse coordinadamente: el RFI formal con 3 proveedores y el uso no oficial de Treble por parte del área de Mercadeo. Ambos generan riesgos distintos si no se gestionan juntos." />
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <Card className="border-l-4 border-l-blue-500"><h3 className="text-sm font-black text-slate-900 mb-2">RFI formal — en curso</h3><p className="text-xs text-slate-600 leading-relaxed mb-3">Proceso en quinta ronda de evaluación. 3 proveedores: Infobip (actual), Salesforce/Freeway (V6), Twilio/SEAQ. Objetivo: chatbot WhatsApp 24/7 con escalamiento a agentes. Requiere vobo de VPs Falla y Suárez.</p><div className="flex flex-wrap gap-1.5"><Badge label="Infobip" color="blue" /><Badge label="Salesforce/Freeway" color="green" /><Badge label="Twilio/SEAQ" color="purple" /></div></Card>
-                        <Card className="border-l-4 border-l-red-500"><h3 className="text-sm font-black text-slate-900 mb-2">Treble — uso no oficial identificado</h3><p className="text-xs text-slate-600 leading-relaxed mb-3">El negocio ya está usando Treble sin que esté dentro del stack tecnológico aprobado de SB. Herramienta activa sin contrato formal, sin veeduría de TI y sin evaluación de seguridad.</p><Badge label="Shadow IT — fuera del stack oficial" color="red" /></Card>
+                        <Card className="border-l-4 border-l-red-500"><h3 className="text-sm font-black text-slate-900 mb-2">Treble — uso no oficial identificado</h3><p className="text-xs text-slate-600 leading-relaxed mb-3">Mercadeo ya está usando Treble sin que esté dentro del stack tecnológico aprobado de SB. Herramienta activa sin contrato formal, sin aprobación de TI y sin evaluación de seguridad.</p><Badge label="Shadow IT — fuera del stack oficial" color="red" /></Card>
                     </div>
                     <Card>
                         <h3 className="font-black text-slate-900 mb-3">El dilema de consolidación</h3>
@@ -661,7 +661,7 @@ const ArquitecturaView = () => (
         <AlertBox type="info" text="Flujo: Siebel y PureCloud emiten eventos → MuleSoft normaliza → Data 360 construye perfil unificado → Atlas Reasoning Engine decide el journey → Agentforce ejecuta → resultado escribe de vuelta a Siebel para trazabilidad SFC." />
         <div className="space-y-3">
             {[
-                { n:1, l:"Sistemas de origen", c:"amber", items:[["Oracle Siebel","CRM regulatorio (SFC) · MuleSoft Siebel Connector 4.0"],["PureCloud / Genesys","Contact center · CX Cloud AppExchange nativo"],["Asistencia Bolívar","Field Service · FSM nativo Salesforce"]] },
+                { n:1, l:"Sistemas de origen", c:"amber", items:[["Oracle Siebel","CRM regulatorio (SFC) · Siebel Connector 4.0"],["PureCloud / Genesys","Contact center · CX Cloud AppExchange nativo"],["Asistencia Bolívar","Field Service · FSM nativo Salesforce"]] },
                 { n:2, l:"Capa de integración", c:"purple", items:[["MuleSoft Anypoint","Siebel Connector 4.0 — query, upsert, sync, Business Objects API"],["Genesys CX Cloud","Service Cloud Voice — CTI + transcripción live en tiempo real"],["Field Service Agent","Salesforce FSM — casos + asignación de técnicos"]] },
                 { n:3, l:"Datos unificados", c:"teal", items:[["Salesforce Data 360 + Data Lake SB (BYOL Federation)","Perfil unificado del cliente — 14 fuentes CRM — InsurancePolicy DMO — Individual DMO"]] },
                 { n:4, l:"Motor agéntico", c:"teal", items:[["Agentforce 360 — Atlas Reasoning Engine","Detecta eventos · Decide journey · Orquesta acciones cross-departamental"]] },
