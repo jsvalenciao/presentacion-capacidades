@@ -65,7 +65,7 @@ const HomeView = ({ onNavigate }) => {
     const sub = [
         { view:View.CASOS_USO, icon:"lightbulb", title:"6 Casos de uso Vista 360", desc:"Agentforce aplicado a SB" },
         { view:View.ARQUITECTURA, icon:"account_tree", title:"Arquitectura integración", desc:"Agentforce 360 + Siebel + PureCloud" },
-        { view:View.DATOS, icon:"table_chart", title:"Requerimientos de datos", desc:"18 campos y estado del Data Lake" },
+    {/*    { view:View.DATOS, icon:"table_chart", title:"Requerimientos de datos", desc:"18 campos y estado del Data Lake" }, */}
         { view:View.AGENDA, icon:"checklist", title:"Agenda reunión SF", desc:"20 preguntas técnicas y comerciales" },
     ];
     return (
@@ -681,7 +681,7 @@ const ArquitecturaView = () => (
     </div>
 );
 
-const DatosView = () => (
+/* const DatosView = () => (
     <div className="animate-in space-y-6 pb-20">
         <SectionHeader eyebrow="Análisis derivado — Punto 1 + 3" title="Requerimientos de datos para Agentforce" subtitle="18 campos del Data Lake de SB necesarios para construir la audiencia de cross-sell de vida" />
         <div className="grid grid-cols-3 gap-4">
@@ -704,7 +704,7 @@ const DatosView = () => (
             ))}
         </div>
     </div>
-);
+); */
 
 // ── REUNIÓN SF — HOJA DE TRABAJO ────────────────────────────────────────────
 const ReunionView = ({ onNavigate }) => {
@@ -1018,8 +1018,8 @@ const App = () => {
         return () => window.removeEventListener('hashchange',h);
     },[]);
     const nav = v => { setCv(v); window.location.hash=v; setMob(false); window.scrollTo(0,0); };
-    const navItems = [{view:View.INICIO,label:"Inicio"},{view:View.REUNION,label:"⭐ Reunión SF"},{view:View.NOVEDADES,label:"1. Novedades SF"},{view:View.COMUNICACIONES,label:"2. Cartera"},{view:View.DATA_CLOUD,label:"3. Data Cloud"},{view:View.WHATSAPP,label:"4. WhatsApp"},{view:View.CASOS_USO,label:"Casos de uso"},{view:View.ARQUITECTURA,label:"Arquitectura"},{view:View.DATOS,label:"Datos"},{view:View.AGENDA,label:"Agenda SF"}];
-    const render = () => { switch(cv) { case View.INICIO: return <HomeView onNavigate={nav}/>; case View.REUNION: return <ReunionView onNavigate={nav}/>; case View.NOVEDADES: return <NovedadesView onNavigate={nav}/>; case View.COMUNICACIONES: return <ComunicacionesView onNavigate={nav}/>; case View.DATA_CLOUD: return <DataCloudView onNavigate={nav}/>; case View.WHATSAPP: return <WhatsappView onNavigate={nav}/>; case View.CASOS_USO: return <CasosUsoView/>; case View.ARQUITECTURA: return <ArquitecturaView/>; case View.DATOS: return <DatosView/>; case View.AGENDA: return <AgendaView/>; default: return <HomeView onNavigate={nav}/>; } };
+    const navItems = [{view:View.INICIO,label:"Inicio"},{view:View.REUNION,label:"⭐ Reunión SF"},{view:View.NOVEDADES,label:"1. Novedades SF"},{view:View.COMUNICACIONES,label:"2. Cartera"},{view:View.DATA_CLOUD,label:"3. Data Cloud"},{view:View.WHATSAPP,label:"4. WhatsApp"},{view:View.CASOS_USO,label:"Casos de uso"},{view:View.ARQUITECTURA,label:"Arquitectura"},{view:View.AGENDA,label:"Agenda SF"}];
+    const render = () => { switch(cv) { case View.INICIO: return <HomeView onNavigate={nav}/>; case View.REUNION: return <ReunionView onNavigate={nav}/>; case View.NOVEDADES: return <NovedadesView onNavigate={nav}/>; case View.COMUNICACIONES: return <ComunicacionesView onNavigate={nav}/>; case View.DATA_CLOUD: return <DataCloudView onNavigate={nav}/>; case View.WHATSAPP: return <WhatsappView onNavigate={nav}/>; case View.CASOS_USO: return <CasosUsoView/>; case View.ARQUITECTURA: return <ArquitecturaView/>; case View.AGENDA: return <AgendaView/>; default: return <HomeView onNavigate={nav}/>; } };
     return (
         <div className="flex flex-col h-screen bg-canvas-bg font-sans">
             <header className="no-print sticky top-0 z-50 bg-white border-b border-slate-200 h-20 shrink-0 shadow-sm">
